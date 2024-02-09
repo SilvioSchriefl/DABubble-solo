@@ -1,1 +1,88 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat
+
+$DABubble-solo-primary: mat.define-palette(mat.$indigo-palette)
+$DABubble-solo-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400)
+$DABubble-solo-warn: mat.define-palette(mat.$red-palette)
+
+body
+    font-family: "Nunito Sans", sans-serif
+    margin: 0
+    overflow: hidden
+    background: #ECEEFE
+
+
+.d_none
+    display: none !important
+
+.spinner
+    width: 30px !important
+
+.mat-mdc-progress-spinner
+    --mdc-circular-progress-active-indicator-color: #fff
+
+
+.response_error
+    z-index: -1
+    opacity: 0
+    position: absolute
+    bottom: 185px
+    right: calc(50% - 200px)
+    color: white
+    font-size: 20px
+    font-weight: 700
+    box-sizing: border-box
+    width: 400px
+    background-color: red
+    border-radius: 30px
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 15px
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px
+
+.response_success
+    width: 400px
+    z-index: -1
+    opacity: 0
+    position: absolute
+    bottom: 185px
+    right: calc(50% - 200px)
+    color: white
+    font-size: 20px
+    font-weight: 700
+    box-sizing: border-box
+    background-color: #444DF2
+    border-radius: 30px
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 15px
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px
+
+
+
+@keyframes slide_in_login_succes
+    0%
+        opacity: 0
+        transform: translateY(150px)
+
+    100%
+        opacity: 1
+        transform: translateY(0%)
+
+@keyframes slide_in
+    0%
+        opacity: 0
+        transform: translateY(+150%)
+
+    10%
+        opacity: 1
+        transform: translateY(-10%)
+
+    90%
+        opacity: 1
+        transform: translateY(-10%)
+
+    100%
+        opacity: 0
+        transform: translateY(+150%)

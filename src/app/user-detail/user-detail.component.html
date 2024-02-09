@@ -1,0 +1,27 @@
+<div class="user_detail_div">
+    <header>
+        <span>Profil</span>
+        <div class="close" (click)="closeUserDetails()">
+            <img src="/assets/img/close.png" alt="">
+        </div>
+    </header>
+    <img class="avatar" [src]="auth.user.avatar" alt="">
+    <div class="name">
+        <span>{{auth.user.name}}</span>
+        <div class="edit">
+            <img src="/assets/img/70. edit.png" alt="">
+            <span (click)="editUser()">Bearbeiten</span>
+        </div>
+    </div>
+    <div class="status">
+        <img src="/assets/img/Online.png" alt="">
+        <span>Aktiv</span>
+    </div>
+    <div class="email_div">
+        <img src="/assets/img/mail.png" alt="">
+        <div class="email">
+            <span>E-Mail-Adresse</span>
+            <a [href]="'mailto:' + auth.user.email">{{auth.user.email}}</a>
+        </div>
+    </div>
+</div>
