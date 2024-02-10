@@ -26,7 +26,7 @@ export class AvatarComponent {
     let body = {
       avatar: this.avatar
     }
-    await this.auth.setAvatar(body)
+    await this.auth.updateUser(body)
     this.auth.user.avatar = this.avatar
     this.router.navigateByUrl('home');
   }

@@ -61,13 +61,17 @@ export class AuthenticationServiceService {
   }
 
 
-  async setAvatar(body: { avatar: string; }) {
+  async updateUser(body: { avatar?: string; name?: string; email?: string; }) {
     let url = this.baseUrl + 'update_user/'
     try {
-      await lastValueFrom(this.http.post(url, body))
+      this.user = await lastValueFrom(this.http.post<User>(url, body))
+      console.log(this.user);
+      
     }
-    catch {
+    catch (error) {
       console.error
+      console.log(error, this.token);
+      
     }
   }
 

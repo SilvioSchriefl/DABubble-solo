@@ -22,7 +22,7 @@
         <span>Anmelden mit Google</span>
     </div>
     <div class="button_div_sign_in">
-        <div [class.invalid]="password.length < 1 || !email_valid" (click)="signInWithPassword()" class="signin_button">
+        <div [class.invalid]="password.length < 1 || !email_valid" (click)="signInWithPassword()" class="white_button">
             @if (!auth.loading) {
                 Anmelden
             }
@@ -31,7 +31,7 @@
             }
             
         </div>
-        <div (click)="guestLogin()" class="guest_login_button">Gäste-Login</div>
+        <div (click)="guestLogin()" class="blue_button">Gäste-Login</div>
     </div>
 </div>
 <div class="imprint">

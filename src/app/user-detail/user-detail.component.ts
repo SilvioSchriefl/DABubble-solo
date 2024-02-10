@@ -3,14 +3,17 @@ import { PopupService } from '../popup.service';
 import { AuthenticationServiceService } from '../authentication-service.service';
 
 
+
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.sass'
 })
-export class UserDetailComponent {
+export class UserDetailComponent  {
 
   edit_user = false
+  name: string = ''
+  email: string = ''
 
   constructor(
     private popup: PopupService,
@@ -23,8 +26,19 @@ export class UserDetailComponent {
   }
 
 
-  editUser(){
-    this.edit_user = true
+  toggleEditUser(){
+    this.edit_user = !this.edit_user
+  }
+
+
+  async saveUser(){
+    console.log(this.name, this.email);
+    
+    let body = {
+      name: this.name,
+      email: this.email,
+    }
+    await this.auth.updateUser(body)
   }
   
 }

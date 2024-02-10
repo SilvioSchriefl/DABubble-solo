@@ -6,11 +6,13 @@
         </div>
     </header>
     <img class="avatar" [src]="auth.user.avatar" alt="">
+
+    @if (!edit_user) {
     <div class="name">
         <span>{{auth.user.name}}</span>
         <div class="edit">
             <img src="/assets/img/70. edit.png" alt="">
-            <span (click)="editUser()">Bearbeiten</span>
+            <span (click)="toggleEditUser()">Bearbeiten</span>
         </div>
     </div>
     <div class="status">
@@ -24,4 +26,28 @@
             <a [href]="'mailto:' + auth.user.email">{{auth.user.email}}</a>
         </div>
     </div>
+    }
+    @else {
+
+    <div class="edit_profile">
+        <div class="edit_name">
+            <div class="name_div">
+                <img src="/assets/img/account_circle.png" alt="">
+                <span>Vollständiger Name</span>
+            </div>
+            <input class="input" type="text" [placeholder]="auth.user.name" [(ngModel)]="name">
+        </div>
+        <div class="edit_name">
+            <div class="name_div">
+                <img src="/assets/img/account_circle.png" alt="">
+                <span>E-Mail-Adresse</span>
+            </div>
+            <input class="input" type="email" [placeholder]="auth.user.email" [(ngModel)]="email">
+        </div>
+        <div class="buttons">
+            <div class="white_button" (click)="toggleEditUser()">Abbrechen</div>
+            <div class="blue_button" (click)="saveUser()">Speichern</div>
+        </div>
+    </div>
+}
 </div>
