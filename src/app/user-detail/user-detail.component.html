@@ -5,9 +5,84 @@
             <img src="/assets/img/close.png" alt="">
         </div>
     </header>
-    <img class="avatar" [src]="auth.user.avatar" alt="">
+    @if (!popup.edit_avatar) {
+        <img class="avatar" (click)="toggleEditAvatar() " [src]="auth.user.avatar" alt="">
+    }
+    @else {
+        <img class="avatar_edit" [src]="avatar" alt="">
+    }
+   
 
-    @if (!edit_user) {
+
+    @if(popup.edit_avatar) {
+    <span>Wähle deinen Avatar</span>
+    <div class="avatar_div">
+        <div *ngFor="let avatar of images; let i = index">
+            <img class="avatar_images" (click)="setAvatar(avatar)" [src]="avatar" alt="">
+        </div>
+    </div>
+    <div class="buttons">
+        <div class="white_button" (click)="toggleEditAvatar()">Abbrechen</div>
+        <div class="blue_button" (click)="saveAvatar()">
+            @if (auth.loading) {
+            <mat-spinner></mat-spinner>
+            }
+            @else {
+            Speichern
+            }
+        </div>
+    </div>
+    }
+
+    @if (popup.edit_name) {
+    <div class="edit_profile">
+        <div class="edit_name">
+            <div class="name_div">
+                <img src="/assets/img/account_circle.png" alt="">
+                <span>Vollständiger Name</span>
+            </div>
+            <input maxlength="40" class="input" type="text" [placeholder]="auth.user.name" [(ngModel)]="name"
+                (focus)="handleFocus()">
+        </div>
+        <span *ngIf="!input_valid" class="error">Bitte gebe einen Vor- und NachNamen ein.</span>
+        <div class="buttons">
+            <div class="white_button" (click)="toggleEditUser()">Abbrechen</div>
+            <div class="blue_button" (click)="saveUser()">
+                @if (auth.loading) {
+                <mat-spinner></mat-spinner>
+                }
+                @else {
+                Speichern
+                }
+            </div>
+        </div>
+    </div>
+    }
+    @if (popup.edit_email) {
+    <div class="edit_profile">
+        <div class="edit_name">
+            <div class="name_div">
+                <img src="/assets/img/account_circle.png" alt="">
+                <span>E-Mail-Adresse</span>
+            </div>
+            <input maxlength="30" class="input" type="email" [placeholder]="auth.user.email" [(ngModel)]="email"
+                (focus)="handleFocus()">
+        </div>
+        <span *ngIf="!input_valid" class="error">Bitte gebe eine gültige E-Mail-Adresse ein.</span>
+        <div class="buttons">
+            <div class="white_button" (click)="toggleEditEmail()">Abbrechen</div>
+            <div class="blue_button" (click)="saveEmail()">
+                @if (auth.loading) {
+                <mat-spinner></mat-spinner>
+                }
+                @else {
+                Speichern
+                }
+            </div>
+        </div>
+    </div>
+    }
+    @if (!popup.edit_name && !popup.edit_email && !popup.edit_avatar) {
     <div class="name">
         <span>{{auth.user.name}}</span>
         <div class="edit">
@@ -20,34 +95,17 @@
         <span>Aktiv</span>
     </div>
     <div class="email_div">
-        <img src="/assets/img/mail.png" alt="">
         <div class="email">
+            <img class="email_img" src="/assets/img/mail.png" alt="">
             <span>E-Mail-Adresse</span>
-            <a [href]="'mailto:' + auth.user.email">{{auth.user.email}}</a>
         </div>
+        <div class="edit">
+            <img src="/assets/img/70. edit.png" alt="">
+            <span (click)="toggleEditEmail()">Bearbeiten</span>
+        </div>
+    </div>
+    <div class="email_link">
+        <a [href]="'mailto:' + auth.user.email">{{auth.user.email}}</a>
     </div>
     }
-    @else {
-
-    <div class="edit_profile">
-        <div class="edit_name">
-            <div class="name_div">
-                <img src="/assets/img/account_circle.png" alt="">
-                <span>Vollständiger Name</span>
-            </div>
-            <input class="input" type="text" [placeholder]="auth.user.name" [(ngModel)]="name">
-        </div>
-        <div class="edit_name">
-            <div class="name_div">
-                <img src="/assets/img/account_circle.png" alt="">
-                <span>E-Mail-Adresse</span>
-            </div>
-            <input class="input" type="email" [placeholder]="auth.user.email" [(ngModel)]="email">
-        </div>
-        <div class="buttons">
-            <div class="white_button" (click)="toggleEditUser()">Abbrechen</div>
-            <div class="blue_button" (click)="saveUser()">Speichern</div>
-        </div>
-    </div>
-}
 </div>

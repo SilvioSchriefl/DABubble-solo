@@ -5,7 +5,7 @@
     border-radius: 30px
     display: flex
     flex-direction: column
-    gap: 40px
+    gap: 30px
     align-items: center
     padding: 40px
 header
@@ -44,6 +44,13 @@ header
     &:hover
         box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px
 
+.avatar_edit
+    width: 200px
+    height: 200px
+    border-radius: 100%
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px
+    transition: 200ms
+
 .name
     width: 100%
     display: flex
@@ -76,24 +83,15 @@ header
 .email_div
     width: 100%
     display: flex
+    justify-content: space-between
     gap: 20px
-    img
-        width: 25px
-        height: 20px
-        margin-top: 3px
 
 .email
     display: flex
-    flex-direction: column
     gap: 20px
     span
         font-size: 20px
         font-weight: 700
-    a
-        text-decoration: none
-        color: #1381FF
-        font-size: 18px
-        font-weight: 400
 
 .edit_profile
     width: 100%
@@ -113,16 +111,54 @@ header
     align-items: center
     gap: 20px
 
-.input
+input
     padding-left: 10px
     width: 100%
     height: 45px
     border-radius: 25px
     border: 1px solid #ADB0D9
+    transition: 150ms
+    &:hover
+        cursor: pointer
+        border: 1px solid #686868
+
+    &:focus
+        border: 1px solid #535AF1
 
 .buttons
     display: flex
     justify-content: space-between
     width: 100%
 
+.email_img
+    margin-top: 3px
+    width: 25px
+    height: 20px
 
+.email_link
+    width: 100%
+    padding-left: 94px
+    a
+        text-decoration: none
+        color: #1381FF
+        font-size: 18px
+        font-weight: 400
+
+.error
+    position: absolute
+    left: 100px
+    bottom: 10px
+    color: red
+    font-size: 16px
+
+.avatar_div
+    display: flex
+    img
+        width: 70px
+        height: 70px
+        border-radius: 100%
+        cursor: pointer
+        transition: 50ms
+        &:hover
+            transform: scale(1.05)
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px

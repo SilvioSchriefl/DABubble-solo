@@ -65,13 +65,11 @@ export class AuthenticationServiceService {
     let url = this.baseUrl + 'update_user/'
     try {
       this.user = await lastValueFrom(this.http.post<User>(url, body))
-      console.log(this.user);
-      
+      return true
     }
     catch (error) {
       console.error
-      console.log(error, this.token);
-      
+      return false    
     }
   }
 

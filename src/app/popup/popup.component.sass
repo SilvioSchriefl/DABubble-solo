@@ -35,7 +35,7 @@
 .account_button
     display: flex
     align-items: center
-    justify-content: center
+    justify-content: space-between
     width: 80%
     cursor: pointer
     background: #fff
@@ -44,7 +44,7 @@
     transition: 200ms
     span
         cursor: pointer
-        font-size: 24px
+        font-size: 20px
         font-weight: 600
 
     &:hover
@@ -59,4 +59,9 @@
     top: 80px
     right: 20px
     z-index: 4
+
+.show_feedback
+    z-index: 5
+    animation: slide_in 3s ease-in-out
+
     

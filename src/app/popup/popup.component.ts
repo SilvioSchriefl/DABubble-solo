@@ -11,8 +11,6 @@ import { Router } from '@angular/router';
 })
 export class PopupComponent {
 
-
-
   constructor(
     public popup: PopupService,
     public auth: AuthenticationServiceService,
@@ -20,18 +18,12 @@ export class PopupComponent {
     private router: Router
   ) { }
 
-
-  closePopup() {
-    this.popup.open_popup = false
-  }
-
-
   async logOut() {
     let body = {
       email: this.auth.user.email,
     }
     if (await this.auth.logOut(body)) {
-      this.closePopup()
+      this.popup.closePopup()
       this.guard.authenticated = false;
       this.router.navigateByUrl('sign_in');
       this.auth.token = null!

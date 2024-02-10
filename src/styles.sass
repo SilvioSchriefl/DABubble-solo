@@ -17,7 +17,7 @@ body
     width: 30px !important
 
 .mat-mdc-progress-spinner
-    --mdc-circular-progress-active-indicator-color: #fff
+    --mdc-circular-progress-active-indicator-color: #7e7e7e
 
 .response_error
     z-index: -1
@@ -68,6 +68,15 @@ input
     font-size: 18px
     color: #000
     box-sizing: border-box
+    &:hover
+        cursor: pointer
+        border: 1px solid #686868
+
+    &:focus
+        border: 1px solid #535AF1
+
+    &:focus::placeholder
+        color: transparent
 
 .white_button
     transition: 200ms
