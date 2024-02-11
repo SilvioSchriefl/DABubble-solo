@@ -17,6 +17,7 @@ export class HeaderComponent {
 
   openAccountMenu() {
     this.popup.open_popup = true
+    this.popup.open_account_menu = true
   }
 
 }

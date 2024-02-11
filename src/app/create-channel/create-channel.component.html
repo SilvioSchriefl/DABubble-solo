@@ -1,0 +1,46 @@
+@if (!add_users) {
+<header>
+    <span>Channel erstellen</span>
+    <div class="close" (click)="closeAddChannel()">
+        <img src="/assets/img/close.png" alt="">
+    </div>
+</header>
+<span class="description">Channels dienen deinem Team zur Kommunikation. Am besten sollten sie themenbezogen sein
+    #marketing zum Beispiel.</span>
+<span class="input_name">Channel-Name</span>
+<input type="text" [(ngModel)]="channel_name" maxlength="32">
+<span class="input_name">
+    Beschreibung
+    <span>(optional)</span>
+</span>
+<input type="text" [(ngModel)]="channel_description" maxlength="200">
+<div class="blue_button" (click)="addUser()"> Weiter</div>
+}
+
+@if (add_users) {
+<header>
+    <span>Leute hinzufügen</span>
+    <div class="close" (click)="closeAddChannel()">
+        <img src="/assets/img/close.png" alt="">
+    </div>
+</header>
+<div class="select">
+    <input type="radio" [(ngModel)]="all_users" [value]="true"> Alle Mitglieder von DA-Bubble hinzufügen
+</div>
+<div class="select">
+    <input type="radio" [(ngModel)]="all_users" [value]="false"> Bestimmte Leute hinzufügen
+</div>
+
+<div *ngIf="!all_users">
+    <input type="text" [(ngModel)]="search_name" placeholder="Name">
+</div>
+
+<div class="blue_button absolute" (click)="createChannel()">
+    @if (auth.loading) {
+    <mat-spinner></mat-spinner>
+    }
+    @else {
+    Erstellen
+    }
+</div>
+}

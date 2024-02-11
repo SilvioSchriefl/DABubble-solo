@@ -1,14 +1,17 @@
 <div [class.show_overlay]="popup.open_popup" class="overlay" (click)="popup.closePopup()">
-    <app-user-detail class="user_detail" [class.d_none]="!popup.open_user_details" (click)="stopPropagation($event)"></app-user-detail>
-    
-    <div class="header_menu" (click)="stopPropagation($event)" [class.d_none]="popup.open_user_details">
-        <div class="account_button" (click)="openUserDetails()">
-            <img src="/assets/img/account_circle.png" alt="">
-            <span >Profil</span>
-        </div>
-        <div (click)="logOut()" class="account_button">
-            <img src="/assets/img/logout.png" alt="">
-            <span>Log Out</span>
+    <app-create-channel (click)="stopPropagation($event)" class="create_channel" *ngIf="popup.open_create_channel"></app-create-channel>
+    <app-user-detail class="user_detail" [class.d_none]="!popup.open_user_details"
+        (click)="stopPropagation($event)"></app-user-detail>
+    <div *ngIf="popup.open_account_menu">
+        <div class="header_menu" (click)="stopPropagation($event)" [class.d_none]="popup.open_user_details">
+            <div class="account_button" (click)="openUserDetails()">
+                <img src="/assets/img/account_circle.png" alt="">
+                <span>Profil</span>
+            </div>
+            <div (click)="logOut()" class="account_button">
+                <img src="/assets/img/logout.png" alt="">
+                <span>Log Out</span>
+            </div>
         </div>
     </div>
 </div>

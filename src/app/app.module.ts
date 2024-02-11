@@ -17,6 +17,10 @@ import { AuthenticationServiceService } from './authentication-service.service';
 import { HeaderComponent } from './header/header.component';
 import { PopupComponent } from './popup/popup.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { ChannelMenuComponent } from './channel-menu/channel-menu.component';
+import { ChatComponent } from './chat/chat.component';
+import { ThreadComponent } from './thread/thread.component';
+import { CreateChannelComponent } from './create-channel/create-channel.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     HomeComponent,
     HeaderComponent,
     PopupComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    ChannelMenuComponent,
+    ChatComponent,
+    ThreadComponent,
+    CreateChannelComponent
   ],
   imports: [
     BrowserModule,

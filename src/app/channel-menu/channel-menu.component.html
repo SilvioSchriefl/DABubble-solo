@@ -1,0 +1,89 @@
+<div class="main" [class.hide_menu]="!open_workspace">
+    <div class="main_scroll" >
+        <header>
+            <img src="/assets/img/Workspace logo.png" alt="">
+            <span>Code learning</span>
+            <div class="hover">
+                <img src="\assets\img\edit_square.png" alt="">
+            </div>
+        </header>
+        <div class="channel_header">
+            <div class="headline" (click)="openChannelMenu()">
+                <img src="/assets/img/arrow_drop_down.png" [style.transform]="rotate1" alt="">
+                <img class="icon" src="/assets/img/workspaces.png" alt="">
+                <span>Channels</span>
+            </div>
+            <div class="hover" (click)="openAddChannel()">
+                <img src="\assets\img\add.png" alt="">
+            </div>
+        </div>
+        <div class="channels_chats" [class.open_menu]="open_channels">
+
+            
+            <div class="hover2">
+                <div class="channel_name">
+                    <img src="/assets/img/tag.png" alt="">
+                    <span>Test</span>
+                </div>
+            </div>
+            <div class="hover2">
+                <div class="channel_name">
+                    <img src="/assets/img/tag.png" alt="">
+                    <span>Test</span>
+                </div>
+            </div>
+            <div class="hover2">
+                <div class="channel_name">
+                    <img src="/assets/img/tag.png" alt="">
+                    <span>Test</span>
+                </div>
+            </div>
+            <div class="hover2">
+                <div class="channel_name">
+                    <img src="/assets/img/tag.png" alt="">
+                    <span>Test</span>
+                </div>
+            </div>
+            <div class="hover2">
+                <div class="channel_name">
+                    <img src="/assets/img/tag.png" alt="">
+                    <span>Test</span>
+                </div>
+            </div>
+            <div class="hover2">
+                <div class="channel_name">
+                    <img src="/assets/img/tag.png" alt="">
+                    <span>Test</span>
+                </div>
+            </div>
+            <div class="hover2">
+                <div class="channel_name">
+                    <img src="/assets/img/tag.png" alt="">
+                    <span>Test</span>
+                </div>
+            </div>
+            <div class="hover2">
+                <div class="channel_name">
+                    <img src="/assets/img/tag.png" alt="">
+                    <span>Test</span>
+                </div>
+            </div>
+
+
+            <div class="add_channel">
+                <img src="/assets/img/add_circle.png" alt="">
+                <span>Channel hinzufügen</span>
+            </div>
+        </div>
+        <div class="direct_chat">
+            <div class="headline" (click)="openDirectChat()">
+                <img src="/assets/img/arrow_drop_down.png" [style.transform]="rotate2" alt="">
+                <img class="icon" src="/assets/img/account_circle.png" alt="">
+                <span>Direktnachrichten</span>
+            </div>
+            <div class="channels_chats" [class.open_menu]="open_direct_chat">
+                test
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,6 +8,9 @@ import { AuthenticationServiceService } from '../authentication-service.service'
 })
 export class HomeComponent implements OnInit {
 
+
+  open_workspace: boolean = true
+
   constructor(
     public auth: AuthenticationServiceService
   ) { }
@@ -15,6 +18,11 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     await this.auth.getAllUsers()
+  }
+
+
+  toggleWorkspace() {
+    this.open_workspace = !this.open_workspace
   }
 
 }

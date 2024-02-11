@@ -1,3 +1,14 @@
- 
-<app-header></app-header>>
+
+<app-header></app-header>
+<div class="vertical_button" (click)="toggleWorkspace()">
+    <span>Workspace-Menü schließen</span>
+    <img src="/assets/img/hide-nav.svg" alt="">
+</div>
+<div class="main_div">
+    <app-channel-menu [open_workspace]="open_workspace" ></app-channel-menu>
+    <app-chat></app-chat>
+    <app-thread></app-thread>
+</div>
+
+
 
