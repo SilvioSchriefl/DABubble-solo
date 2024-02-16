@@ -1,1 +1,14 @@
-<p>channel-members-popup works!</p>
+<div class="main">
+    <div class="member" *ngFor="let member of channel.current_channel?.members; let i = index" class="member" (click)="showUserDetails(member)">
+        <img [src]="member.avatar" alt="">
+        {{member.name}}
+    </div>
+</div>
+<div class="add_user_div">
+    <div class="add_user">
+        <div class="add_user_icon" #channel_members>
+            <img src="/assets/img/person_add.png" alt="">
+        </div>
+        <span>Mitglieder hinzufügen</span>
+    </div>
+</div>

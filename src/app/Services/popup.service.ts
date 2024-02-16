@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 export class PopupService {
 
   open_popup: boolean = false;
-  open_user_details: boolean = false;
+  open_current_user_details: boolean = false;
+  open_user_details: boolean = false
   edit_name = false
   edit_email = false
   edit_avatar = false
@@ -16,8 +17,6 @@ export class PopupService {
   open_create_channel: boolean = false
   open_account_menu: boolean = false
   open_channel_members: boolean = false
-  position_right: number = 0
-  position_top: number = 0
 
   constructor() { }
 
@@ -26,7 +25,7 @@ export class PopupService {
     this.edit_name = false
     this.edit_email = false
     this.edit_avatar = false
-    this.open_user_details = false
+    this.open_current_user_details = false
     this.open_create_channel = false
     this.open_account_menu = false
   }

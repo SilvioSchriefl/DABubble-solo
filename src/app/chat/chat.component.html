@@ -1,5 +1,6 @@
+
 <div class="main" >
-    <header>
+    <header >
         
         <div *ngIf="channel.current_channel"class="channel_name">
             <img src="/assets/img/tag.png" alt="">
@@ -11,8 +12,9 @@
                 <img *ngIf="i < 3" [src]="member.avatar" alt="">
             </div>
             <span>{{channel.current_channel.members.length}}</span>
+            
         </div>
-        <div  #channel_members class="add_user">
+        <div class="add_user"  #channel_members >
             <img src="/assets/img/person_add.png" alt="">
         </div>
        
@@ -21,4 +23,7 @@
         <span>Dies ist der Anfang von Channel #{{channel.current_channel.name}}</span>
         <span>{{channel.current_channel.description}}</span>
     </div>
+    <app-channel-members-popup *ngIf="open_channel_members" class="show_members"></app-channel-members-popup>
 </div>
+
+<div [class.show_overlay]="open_channel_members" class="overlay" (click)="closeViewChannelMembers()"></div>
