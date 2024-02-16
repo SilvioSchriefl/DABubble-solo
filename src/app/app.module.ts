@@ -12,15 +12,16 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HomeComponent } from './home/home.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { InterceptorService } from './interceptor.service';
-import { AuthenticationServiceService } from './authentication-service.service';
+import { InterceptorService } from './Services/interceptor.service';
+import { AuthenticationServiceService } from './Services/authentication-service.service';
 import { HeaderComponent } from './header/header.component';
-import { PopupComponent } from './popup/popup.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
+import { PopupComponent } from './Popup-Components/popup/popup.component';
+import { UserDetailComponent } from './Popup-Components/user-detail-popup/user-detail.component';
 import { ChannelMenuComponent } from './channel-menu/channel-menu.component';
 import { ChatComponent } from './chat/chat.component';
 import { ThreadComponent } from './thread/thread.component';
-import { CreateChannelComponent } from './create-channel/create-channel.component';
+import { CreateChannelComponent } from './Popup-Components/create-channel-popup/create-channel.component';
+import { ChannelMembersPopupComponent } from './Popup-Components/channel-members-popup/channel-members-popup.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CreateChannelComponent } from './create-channel/create-channel.componen
     ChannelMenuComponent,
     ChatComponent,
     ThreadComponent,
-    CreateChannelComponent
+    CreateChannelComponent,
+    ChannelMembersPopupComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,73 @@
+<div class="main" (click)="closeSearchResults()">
+    @if (!add_users) {
+    <header>
+        <span>Channel erstellen</span>
+        <div class="close" (click)="closeAddChannel()">
+            <img src="/assets/img/close.png" alt="">
+        </div>
+    </header>
+    <span class="description">Channels dienen deinem Team zur Kommunikation. Am besten sollten sie themenbezogen sein
+        #marketing zum Beispiel.</span>
+    <span class="input_name">Channel-Name</span>
+    <input type="text" [(ngModel)]="channel_name" maxlength="32" placeholder="z.B. marketing" (focus)="handleFocus()">
+    <span *ngIf="error" class="error">Bitte gebe einen Namen ein</span>
+    <span class="input_name">
+        Beschreibung
+        <span>(optional)</span>
+    </span>
+    <input type="text" [(ngModel)]="channel_description" maxlength="200">
+    <div class="blue_button" (click)="openAddUserMenu()"> Weiter</div>
+    }
+
+    @if (add_users) {
+    <header>
+        <span>Leute hinzufügen</span>
+        <div class="close" (click)="closeAddUsersMenu()">
+            <img src="/assets/img/close.png" alt="">
+        </div>
+    </header>
+
+
+    <div class="search" *ngIf="search_results.length != 0 && search_name != '' " (click)="stopPropagation($event)">
+        <div class="search_scroll">
+            <div class="search_result" *ngFor="let user of search_results" let i=index (click)="selectUser(user)">
+                <img [src]="user.avatar" alt="">
+                {{user.name}}
+            </div>
+            <div *ngIf="!search_results && search_name.length > 0">Keine Ergebnisse</div>
+        </div>
+    </div>
+
+
+    <div class="select">
+        <input type="radio" [(ngModel)]="all_users" [value]="true"> Alle Mitglieder von DA-Bubble hinzufügen
+    </div>
+    <div class="select">
+        <input type="radio" [(ngModel)]="all_users" [value]="false"> Bestimmte Leute hinzufügen
+    </div>
+
+    <div *ngIf="!all_users">
+        <input type="text" [(ngModel)]="search_name" placeholder="Name" (ngModelChange)="searchUsers()">
+    </div>
+
+    <div class="blue_button absolute" (click)="createChannel()">
+        @if (auth.loading) {
+        <mat-spinner class="spinner"></mat-spinner>
+        }
+        @else {
+        Erstellen
+        }
+    </div>
+    <div class="user" *ngIf="!all_users">
+        <div class="selected_user" *ngFor="let user of selected_users; let i = index">
+            <div class="user_info">
+                <img [src]="user.avatar" alt="">
+                {{user.name}}
+            </div>
+            <div class="remove_user" (click)="removeSelectedUser(user)">
+                <img src="/assets/img/close.png" alt="">
+            </div>
+        </div>
+    </div>
+    }
+</div>

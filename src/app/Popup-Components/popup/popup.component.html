@@ -1,7 +1,9 @@
 <div [class.show_overlay]="popup.open_popup" class="overlay" (click)="popup.closePopup()">
-    <app-create-channel (click)="stopPropagation($event)" class="create_channel" *ngIf="popup.open_create_channel"></app-create-channel>
+    <app-create-channel (click)="stopPropagation($event)" class="create_channel"
+        *ngIf="popup.open_create_channel"></app-create-channel>
     <app-user-detail class="user_detail" [class.d_none]="!popup.open_user_details"
         (click)="stopPropagation($event)"></app-user-detail>
+     <app-channel-members-popup *ngIf="popup.open_channel_members" class="show_members"  [style.top.px]="popup.position_top" [style.right.px]="popup.position_right"></app-channel-members-popup>
     <div *ngIf="popup.open_account_menu">
         <div class="header_menu" (click)="stopPropagation($event)" [class.d_none]="popup.open_user_details">
             <div class="account_button" (click)="openUserDetails()">
@@ -16,3 +18,4 @@
     </div>
 </div>
 <div class="response_success" [class.show_feedback]="popup.response_success">{{popup.feedback_text}}</div>
+<div class="response_error" [class.show_feedback]="popup.response_error">{{popup.feedback_text}}</div>

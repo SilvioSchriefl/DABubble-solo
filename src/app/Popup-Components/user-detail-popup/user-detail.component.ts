@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { PopupService } from '../popup.service';
-import { AuthenticationServiceService } from '../authentication-service.service';
+import { PopupService } from '../../Services/popup.service';
+import { AuthenticationServiceService } from '../../Services/authentication-service.service';
 
 
 

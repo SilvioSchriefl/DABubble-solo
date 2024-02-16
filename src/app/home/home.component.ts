@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationServiceService } from '../authentication-service.service';
+import { AuthenticationServiceService } from '../Services/authentication-service.service';
+import { ChannelService } from '../Services/channel.service';
 
 @Component({
   selector: 'app-home',
@@ -12,17 +13,25 @@ export class HomeComponent implements OnInit {
   open_workspace: boolean = true
 
   constructor(
-    public auth: AuthenticationServiceService
+    public auth: AuthenticationServiceService,
+    public channel: ChannelService,
   ) { }
 
 
   async ngOnInit() {
     await this.auth.getAllUsers()
+    await this.channel.getChannels()
+    this.loadStandardChannel()
   }
 
 
   toggleWorkspace() {
     this.open_workspace = !this.open_workspace
+  }
+
+
+  loadStandardChannel() {
+    this.channel.current_channel = this.channel.all_channels.find((channel: { id: number; }) => channel.id === 4)
   }
 
 }

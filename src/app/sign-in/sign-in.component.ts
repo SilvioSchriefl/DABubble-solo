@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthenticationServiceService } from '../authentication-service.service';
+import { AuthenticationServiceService } from '../Services/authentication-service.service';
 import { Router } from '@angular/router';
 import { RouteGuardService } from '../route-guard.service';
 import { log } from 'console';
@@ -66,8 +66,6 @@ export class SignInComponent {
 
 
   handleLogIn() {
-   
-    
     this.guard.authenticated = true;
     this.signIn_successful = true
     this.auth.setLocalStorageAndToken()

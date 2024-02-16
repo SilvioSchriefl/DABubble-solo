@@ -12,8 +12,12 @@ export class PopupService {
   edit_avatar = false
   feedback_text = ''
   response_success: boolean = false
+  response_error: boolean = false
   open_create_channel: boolean = false
   open_account_menu: boolean = false
+  open_channel_members: boolean = false
+  position_right: number = 0
+  position_top: number = 0
 
   constructor() { }
 

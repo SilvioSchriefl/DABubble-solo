@@ -5,8 +5,8 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthenticationServiceService } from './authentication-service.service';
-import { InterceptorService } from './interceptor.service';
+import { AuthenticationServiceService } from './Services/authentication-service.service';
+import { InterceptorService } from './Services/interceptor.service';
 
 
 

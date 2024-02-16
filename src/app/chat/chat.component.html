@@ -1,3 +1,24 @@
-<div class="main">
-    <header></header>
+<div class="main" >
+    <header>
+        
+        <div *ngIf="channel.current_channel"class="channel_name">
+            <img src="/assets/img/tag.png" alt="">
+            <span >{{channel.current_channel.name}}</span>
+        </div>
+
+        <div  *ngIf="channel.current_channel" class="channel_users" (click)="openChannelMembers()">
+            <div *ngFor="let member of channel.current_channel.members; let i = index">
+                <img *ngIf="i < 3" [src]="member.avatar" alt="">
+            </div>
+            <span>{{channel.current_channel.members.length}}</span>
+        </div>
+        <div  #channel_members class="add_user">
+            <img src="/assets/img/person_add.png" alt="">
+        </div>
+       
+    </header>
+    <div *ngIf="channel.current_channel" class="sub_header">
+        <span>Dies ist der Anfang von Channel #{{channel.current_channel.name}}</span>
+        <span>{{channel.current_channel.description}}</span>
+    </div>
 </div>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { PopupService } from '../popup.service';
-import { AuthenticationServiceService } from '../authentication-service.service';
-import { RouteGuardService } from '../route-guard.service';
+import { PopupService } from '../../Services/popup.service';
+import { AuthenticationServiceService } from '../../Services/authentication-service.service';
+import { RouteGuardService } from '../../route-guard.service';
 import { Router } from '@angular/router';
 
 @Component({

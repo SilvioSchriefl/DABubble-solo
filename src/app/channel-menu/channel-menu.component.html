@@ -20,55 +20,13 @@
         <div class="channels_chats" [class.open_menu]="open_channels">
 
             
-            <div class="hover2">
+            <div class="hover2" *ngFor="let channel of channel.all_channels; let i = index" (click)="selectChannel(channel)">
                 <div class="channel_name">
                     <img src="/assets/img/tag.png" alt="">
-                    <span>Test</span>
+                    <span>{{channel.name}}</span>
                 </div>
             </div>
-            <div class="hover2">
-                <div class="channel_name">
-                    <img src="/assets/img/tag.png" alt="">
-                    <span>Test</span>
-                </div>
-            </div>
-            <div class="hover2">
-                <div class="channel_name">
-                    <img src="/assets/img/tag.png" alt="">
-                    <span>Test</span>
-                </div>
-            </div>
-            <div class="hover2">
-                <div class="channel_name">
-                    <img src="/assets/img/tag.png" alt="">
-                    <span>Test</span>
-                </div>
-            </div>
-            <div class="hover2">
-                <div class="channel_name">
-                    <img src="/assets/img/tag.png" alt="">
-                    <span>Test</span>
-                </div>
-            </div>
-            <div class="hover2">
-                <div class="channel_name">
-                    <img src="/assets/img/tag.png" alt="">
-                    <span>Test</span>
-                </div>
-            </div>
-            <div class="hover2">
-                <div class="channel_name">
-                    <img src="/assets/img/tag.png" alt="">
-                    <span>Test</span>
-                </div>
-            </div>
-            <div class="hover2">
-                <div class="channel_name">
-                    <img src="/assets/img/tag.png" alt="">
-                    <span>Test</span>
-                </div>
-            </div>
-
+        
 
             <div class="add_channel">
                 <img src="/assets/img/add_circle.png" alt="">

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationServiceService } from '../authentication-service.service';
+import { AuthenticationServiceService } from '../Services/authentication-service.service';
 
 @Component({
   selector: 'app-start-screen',

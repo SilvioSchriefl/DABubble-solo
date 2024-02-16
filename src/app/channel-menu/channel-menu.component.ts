@@ -1,5 +1,7 @@
 import { Component, Input, input } from '@angular/core';
-import { PopupService } from '../popup.service';
+import { PopupService } from '../Services/popup.service';
+import { ChannelService } from '../Services/channel.service';
+import { Channel } from '../interfaces/channel.interface';
 
 @Component({
   selector: 'app-channel-menu',
@@ -8,15 +10,16 @@ import { PopupService } from '../popup.service';
 })
 export class ChannelMenuComponent {
 
-  rotate1: string = 'rotate(270deg)'
-  rotate2: string = 'rotate(270deg)'
-  open_channels: boolean = false;
-  open_direct_chat: boolean = false;
+  rotate1: string = 'rotate(0deg)'
+  rotate2: string = 'rotate(0deg)'
+  open_channels: boolean = true;
+  open_direct_chat: boolean = true;
   @Input() open_workspace: boolean = true
 
 
   constructor(
-    public popup: PopupService
+    public popup: PopupService,
+    public channel: ChannelService
   ) { }
 
 
@@ -37,5 +40,10 @@ export class ChannelMenuComponent {
   openAddChannel() {
     this.popup.open_popup = true
     this.popup.open_create_channel = true
+  }
+
+
+  selectChannel(channel: Channel) {
+    this.channel.current_channel = channel
   }
 }

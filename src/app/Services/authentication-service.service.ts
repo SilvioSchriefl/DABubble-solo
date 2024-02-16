@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { environment } from './environments/environments';
-import { User } from './interfaces/user.interface';
+import { environment } from '../environments/environments';
+import { User } from '../interfaces/user.interface';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
-import { AllUsers } from './interfaces/all_users.interface';
 
 
 @Injectable({
@@ -14,7 +13,7 @@ export class AuthenticationServiceService {
   signIn_error = false;
   email_error = false;
   signUp_successful = false;
-  all_users: AllUsers[] | undefined
+  all_users: User[] = [];
   user: User = {
     name: '',
     email: '',
@@ -107,7 +106,7 @@ export class AuthenticationServiceService {
   async getAllUsers() {
     let url = this.baseUrl + 'get_all_users/'
     try {
-    this.all_users = await lastValueFrom(this.http.get<AllUsers[]>(url))
+    this.all_users = await lastValueFrom(this.http.get<User[]>(url))
  
     }
     catch {
