@@ -1,29 +1,33 @@
+<div class="main">
+    <header>
 
-<div class="main" >
-    <header >
-        
-        <div *ngIf="channel.current_channel"class="channel_name">
-            <img src="/assets/img/tag.png" alt="">
-            <span >{{channel.current_channel.name}}</span>
+        <div (click)="openEditChannel()" class="channel_name_div">
+            <div *ngIf="channel.current_channel" class="channel_name">
+                <img src="/assets/img/tag.png" alt="">
+                <span>{{channel.current_channel.name}}</span>
+                <img src="/assets/img/keyboard_arrow_down.png" alt="">
+            </div>
         </div>
 
-        <div  *ngIf="channel.current_channel" class="channel_users" (click)="openChannelMembers()">
+        <div *ngIf="channel.current_channel" class="channel_users" (click)="openChannelMembers()">
             <div *ngFor="let member of channel.current_channel.members; let i = index">
                 <img *ngIf="i < 3" [src]="member.avatar" alt="">
             </div>
-            <span>{{channel.current_channel.members.length}}</span>
-            
+            <span *ngIf="channel.current_channel.members.length > 3">{{channel.current_channel.members.length}}</span>
+
         </div>
-        <div class="add_user"  #channel_members >
+        <div class="add_user" (click)="popup.openAddMembers()">
             <img src="/assets/img/person_add.png" alt="">
         </div>
-       
+
     </header>
     <div *ngIf="channel.current_channel" class="sub_header">
         <span>Dies ist der Anfang von Channel #{{channel.current_channel.name}}</span>
         <span>{{channel.current_channel.description}}</span>
     </div>
-    <app-channel-members-popup *ngIf="open_channel_members" class="show_members"></app-channel-members-popup>
+    <app-channel-members-popup *ngIf="popup.open_channel_members" class="show_members"></app-channel-members-popup>
+    <app-add-member-popup *ngIf="popup.open_add_members" class="add_members"></app-add-member-popup>
+    <app-edit-channel-popup *ngIf="popup.open_edit_channel" class="edit_channel"></app-edit-channel-popup>
 </div>
 
-<div [class.show_overlay]="open_channel_members" class="overlay" (click)="closeViewChannelMembers()"></div>
+<div [class.show_overlay]="popup.open_overlay" class="overlay" (click)="closeViewChannelMembers()"></div>

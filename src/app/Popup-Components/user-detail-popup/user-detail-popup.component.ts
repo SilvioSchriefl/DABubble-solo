@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PopupService } from '../../Services/popup.service';
 
 @Component({
   selector: 'app-user-detail-popup',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrl: './user-detail-popup.component.sass'
 })
 export class UserDetailPopupComponent {
+
+  constructor(
+    public popup: PopupService
+  ) { }
+
+
+
+  closeUserDetails() {
+    this.popup.closePopup()
+  }
 
 }

@@ -10,8 +10,7 @@ import { PopupService } from './popup.service';
 })
 export class ChannelService implements OnInit {
 
-  current_channel!:Channel | undefined
-
+  current_channel!:Channel 
   all_channels:Channel[] = [] 
 
   constructor(
@@ -48,5 +47,22 @@ export class ChannelService implements OnInit {
     catch (error) {
       console.error
     }
+  }
+
+
+  async addUserToChannel( body: { members: number[] }) {
+    let url = environment.baseUrl + 'channel/'
+    try {
+       await lastValueFrom(this.http.patch(url, body))
+       this.popup.feedback_text = 'Benutzer erfolgreich hinzugefügt'
+      return true
+    }
+    catch (error) {
+      console.error
+      this.popup.feedback_text = 'Ein Fehler ist aufgetreten'
+      return false
+    }
+   
+
   }
 }

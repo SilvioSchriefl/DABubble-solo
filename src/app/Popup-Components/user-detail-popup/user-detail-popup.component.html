@@ -1,1 +1,29 @@
-<p>user-detail-popup works!</p>
+<header>
+    <span>Profil</span>
+    <div class="close" (click)="closeUserDetails()">
+        <img src="/assets/img/close.png" alt="">
+    </div>
+</header>
+
+<div class="avatar">
+    <img [src]="popup.detail_user.avatar" alt="">
+</div>
+<div class="name">
+    {{popup.detail_user.name}}
+    <div [class.active]="popup.detail_user.active" [class.away]="!popup.detail_user.active">
+        <div></div>
+        <span *ngIf="popup.detail_user.active">Aktiv</span>
+        <span *ngIf="!popup.detail_user.active">Abwesend</span>
+    </div>
+</div>
+<div class="email">
+    <img class="email_img" src="/assets/img/mail.png" alt="">
+    <span>E-Mail-Adresse</span>
+    <a [href]="'mailto:' + popup.detail_user.email">{{popup.detail_user.email}}</a>
+</div>
+<div class="button">
+    <div class="white_button">Nachricht</div>
+</div>
+
+
+

@@ -6,10 +6,10 @@ import { AuthenticationServiceService } from '../../Services/authentication-serv
 
 @Component({
   selector: 'app-user-detail',
-  templateUrl: './user-detail.component.html',
-  styleUrl: './user-detail.component.sass'
+  templateUrl: './current-user-detail-popup.component.html',
+  styleUrl: './current-user-detail-popup.component.sass'
 })
-export class UserDetailComponent  {
+export class CurrentUserDetailPopupComponent  {
 
   input_valid: boolean = true
   name: string = ''
@@ -26,7 +26,7 @@ export class UserDetailComponent  {
 
 
   closeUserDetails(){
-    this.popup.open_user_details = false
+    this.popup.open_current_user_details = false
     this.popup.edit_email = false
     this.popup.edit_name = false
     this.popup.edit_avatar = false

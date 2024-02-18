@@ -33,12 +33,6 @@ export class PopupComponent {
 
 
   openUserDetails() {
-    this.popup.open_user_details = true
-
+    this.popup.open_current_user_details = true
   }
-
-
-  stopPropagation(event: Event) {
-    event.stopPropagation();
-  };
 }

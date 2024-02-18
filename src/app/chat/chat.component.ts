@@ -10,7 +10,8 @@ import { log } from 'console';
 })
 export class ChatComponent  {
 
-  open_channel_members: boolean = false
+ 
+
 
   constructor(
     public channel: ChannelService,
@@ -19,12 +20,22 @@ export class ChatComponent  {
 
 
   openChannelMembers() {
-    this.open_channel_members = true
+    this.popup.open_channel_members = true
+    this.popup.open_overlay = true
   
   }
 
 
   closeViewChannelMembers() {
-    this.open_channel_members = false
+    this.popup.open_channel_members = false 
+    this.popup.open_overlay = false
+    this.popup.open_add_members = false
+    this.popup.open_edit_channel = false
+  }
+
+
+  openEditChannel() {
+    this.popup.open_edit_channel = true
+    this.popup.open_overlay = true
   }
 }

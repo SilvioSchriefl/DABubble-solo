@@ -16,13 +16,15 @@ import { InterceptorService } from './Services/interceptor.service';
 import { AuthenticationServiceService } from './Services/authentication-service.service';
 import { HeaderComponent } from './header/header.component';
 import { PopupComponent } from './Popup-Components/popup/popup.component';
-import { UserDetailComponent } from './Popup-Components/current-user-detail-popup/user-detail.component';
 import { ChannelMenuComponent } from './channel-menu/channel-menu.component';
 import { ChatComponent } from './chat/chat.component';
 import { ThreadComponent } from './thread/thread.component';
 import { CreateChannelComponent } from './Popup-Components/create-channel-popup/create-channel.component';
 import { ChannelMembersPopupComponent } from './Popup-Components/channel-members-popup/channel-members-popup.component';
 import { UserDetailPopupComponent } from './Popup-Components/user-detail-popup/user-detail-popup.component';
+import { CurrentUserDetailPopupComponent } from './Popup-Components/current-user-detail-popup/current-user-detail-popup.component';
+import { AddMemberPopupComponent } from './Popup-Components/add-member-popup/add-member-popup.component';
+import { EditChannelPopupComponent } from './Popup-Components/edit-channel-popup/edit-channel-popup.component';
 
 @NgModule({
   declarations: [
@@ -34,13 +36,15 @@ import { UserDetailPopupComponent } from './Popup-Components/user-detail-popup/u
     HomeComponent,
     HeaderComponent,
     PopupComponent,
-    UserDetailComponent,
+    CurrentUserDetailPopupComponent,
     ChannelMenuComponent,
     ChatComponent,
     ThreadComponent,
     CreateChannelComponent,
     ChannelMembersPopupComponent,
-    UserDetailPopupComponent
+    UserDetailPopupComponent,
+    AddMemberPopupComponent,
+    EditChannelPopupComponent
   ],
   imports: [
     BrowserModule,

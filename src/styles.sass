@@ -129,7 +129,6 @@ input
         cursor: pointer
         color: white
 
-
 .close
     display: flex
     align-items: center
@@ -147,6 +146,39 @@ input
         background: #ECEEFE
         img
             filter: invert(37%) sepia(39%) saturate(2259%) hue-rotate(216deg) brightness(91%) contrast(107%)
+
+.active
+    display: flex
+    align-items: center
+    gap: 10px
+    :nth-child(1)
+        height: 16px
+        width: 16px
+        border-radius: 100%
+        background: #92C83E
+    span
+        color: #92C83E
+        font-weight: 400
+        font-size: 20px
+
+.away
+    display: flex
+    align-items: center
+    gap: 10px
+    :nth-child(1)
+        height: 16px
+        width: 16px
+        border-radius: 100%
+        background: #686868
+    span
+        color: #686868
+        font-weight: 400
+        font-size: 20px
+
+.invalid
+    background-color: #686868
+    pointer-events: none
+
 
 @keyframes slide_in_login_succes
     0%

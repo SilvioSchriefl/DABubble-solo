@@ -1,0 +1,42 @@
+<header>
+    <span>Leute hinzufügen</span>
+    <div class="close" (click)="closeAddMember()">
+        <img src="/assets/img/close.png" alt="">
+    </div>
+</header>
+<span class="channel_name"># {{channel.current_channel.name}}</span>
+@if (auth.all_users.length == channel.current_channel!.members.length) {
+    Alle Benutzer sind diesem Kanal beigetreten
+}
+@else {
+    <input type="text" [(ngModel)]="search_name" placeholder="Name" (ngModelChange)="searchUsers()">
+}
+
+<div class="button">
+    <div [class.invalid]="selected_users.length == 0" class="white_button" (click)="addUsersToChannel()">Hinzufügen</div>
+</div>
+
+
+
+<div class="search" *ngIf="search_results.length != 0 && search_name != '' " (click)="popup.stopPropagation($event)">
+    <div class="search_scroll">
+        <div class="search_result" *ngFor="let user of search_results" let i=index (click)="selectUser(user)">
+            <img [src]="user.avatar" alt="">
+            {{user.name}}
+        </div>
+        <div *ngIf="!search_results && search_name.length > 0">Keine Ergebnisse</div>
+    </div>
+</div>
+
+
+<div class="user">
+    <div class="selected_user" *ngFor="let user of selected_users; let i = index">
+        <div class="user_info">
+            <img [src]="user.avatar" alt="">
+            {{user.name}}
+        </div>
+        <div class="remove_user" (click)="removeSelectedUser(user)">
+            <img src="/assets/img/close.png" alt="">
+        </div>
+    </div>
+</div>

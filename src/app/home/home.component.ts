@@ -31,7 +31,9 @@ export class HomeComponent implements OnInit {
 
 
   loadStandardChannel() {
-    this.channel.current_channel = this.channel.all_channels.find((channel: { id: number; }) => channel.id === 4)
+    let channel = this.channel.all_channels.find((channel: { id: number; }) => channel.id === 4);
+    if (channel) this.channel.current_channel = channel;
+    else console.log('Channel not found');
   }
 
 }
