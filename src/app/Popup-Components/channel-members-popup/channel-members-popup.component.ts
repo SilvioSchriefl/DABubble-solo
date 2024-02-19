@@ -21,5 +21,6 @@ export class ChannelMembersPopupComponent {
     this.popup.open_user_details = true
     this.popup.open_popup = true
     this.popup.detail_user = user
+    console.log(user.is_active)
   }
 }

@@ -50,7 +50,7 @@
         <input type="text" [(ngModel)]="search_name" placeholder="Name" (ngModelChange)="searchUsers()">
     </div>
 
-    <div [class.invalid]="selected_users.length == 0" class="blue_button absolute" (click)="createChannel()">
+    <div [class.invalid]="selected_users.length == 0 && !all_users" class="blue_button absolute" (click)="createChannel()">
         @if (auth.loading) {
         <mat-spinner class="spinner"></mat-spinner>
         }

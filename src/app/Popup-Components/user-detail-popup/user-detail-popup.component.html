@@ -10,10 +10,10 @@
 </div>
 <div class="name">
     {{popup.detail_user.name}}
-    <div [class.active]="popup.detail_user.active" [class.away]="!popup.detail_user.active">
+    <div [class.active]="popup.detail_user.is_active" [class.away]="!popup.detail_user.is_active">
         <div></div>
-        <span *ngIf="popup.detail_user.active">Aktiv</span>
-        <span *ngIf="!popup.detail_user.active">Abwesend</span>
+        <span *ngIf="popup.detail_user.is_active">Aktiv</span>
+        <span *ngIf="!popup.detail_user.is_active">Abwesend</span>
     </div>
 </div>
 <div class="email">

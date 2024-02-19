@@ -21,7 +21,7 @@ export class AuthenticationServiceService {
     avatar: '',
     token: '',
     id: 0,
-    active: false
+    is_active: false
   };
   baseUrl = environment.baseUrl
   token!: string
@@ -107,7 +107,7 @@ export class AuthenticationServiceService {
     let url = this.baseUrl + 'get_all_users/'
     try {
     this.all_users = await lastValueFrom(this.http.get<User[]>(url))
- 
+      console.log(this.all_users)
     }
     catch {
       console.error

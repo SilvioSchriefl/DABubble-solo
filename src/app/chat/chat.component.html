@@ -21,13 +21,63 @@
         </div>
 
     </header>
-    <div *ngIf="channel.current_channel" class="sub_header">
-        <span>Dies ist der Anfang von Channel #{{channel.current_channel.name}}</span>
-        <span>{{channel.current_channel.description}}</span>
+
+    <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+    <div class="messages">
+        <div *ngIf="channel.current_channel" class="sub_header">
+            <span>Dies ist der Anfang von Channel #{{channel.current_channel.name}}</span>
+            <span>{{channel.current_channel.description}}</span>
+        </div>
+        <div class="message_main" *ngFor="let message of chat.current_chat; let i = index">
+            <div class="date_line" *ngIf="i === 0 || chat.formatDate(message.timestamp) != chat.formatDate(chat.current_chat[i-1].timestamp)">
+                <div class="line"></div>
+                <div class="date_box">{{ chat.formatDate(message.timestamp)}}</div>
+                <div class="line"></div>
+            </div>
+            <div class="content_main">
+                <div class="message_avatar">
+                    <img [src]="message.creator.avatar" alt="">
+                </div>
+                <div class="content">
+                    <div class="name_time">
+                        <span (click)="showUserDetails(message.creator)" >{{message.creator.name}}</span>
+                        <span>{{ message.timestamp }}</span>
+                    </div>
+                    <div class="text">
+                        <span>{{message.message}}</span>
+                    </div>
+                    <div class="response"> 
+                        <span>2 Antworten</span>
+                        <span>letzte Antwort vor 2 Tagen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
     <app-channel-members-popup *ngIf="popup.open_channel_members" class="show_members"></app-channel-members-popup>
     <app-add-member-popup *ngIf="popup.open_add_members" class="add_members"></app-add-member-popup>
     <app-edit-channel-popup *ngIf="popup.open_edit_channel" class="edit_channel"></app-edit-channel-popup>
 </div>
-
+<div class="textarea_div">
+    <textarea [(ngModel)]="message" maxlength="200"></textarea>
+    <div class="icons_div">
+        <div class="icons">
+            <div class="close">
+                <img src="/assets/img/plus.png" alt="">
+            </div>
+            <div class="line_textarea"></div>
+            <div class="close">
+                <img src="/assets/img/smily.png" alt="">
+            </div>
+            <div class="close">
+                <img src="/assets/img/at.png" alt="">
+            </div>
+        </div>
+        <img (click)="sendMessage()" src="/assets/img/send.png" alt="">
+    </div>
+</div>
 <div [class.show_overlay]="popup.open_overlay" class="overlay" (click)="closeViewChannelMembers()"></div>

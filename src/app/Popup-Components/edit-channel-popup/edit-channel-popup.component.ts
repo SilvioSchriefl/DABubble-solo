@@ -32,11 +32,13 @@ export class EditChannelPopupComponent {
 
   openEditChannelName() {
     this.edit_channel_name = true
+    this.edit_channel_description = false
   }
 
 
   openEditChannelDescription() {
     this.edit_channel_description = true
+    this.edit_channel_name = false
   }
 
 

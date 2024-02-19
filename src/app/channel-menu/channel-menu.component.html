@@ -20,10 +20,10 @@
         <div class="channels_chats" [class.open_menu]="open_channels">
 
             
-            <div  class="hover2" *ngFor="let channel of channel.authorized_channels; let i = index" (click)="selectChannel(channel)" [class.active_channel]=" channel == channel.current_channel">
+            <div  class="hover2" *ngFor="let channeL of channel.authorized_channels; let i = index" (click)="selectChannel(channeL)" [class.active_channel]="channel.current_channel == channeL">
                 <div class="channel_name">
                     <img src="/assets/img/tag.png" alt="">
-                    <span>{{channel.name}}</span>
+                    <span>{{channeL.name}}</span>
                 </div>
             </div>
         
@@ -40,7 +40,7 @@
                 <span>Direktnachrichten</span>
             </div>
             <div class="channels_chats" [class.open_menu]="open_direct_chat">
-                test
+            
             </div>
         </div>
     </div>

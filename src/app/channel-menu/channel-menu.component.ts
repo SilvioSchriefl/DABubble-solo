@@ -2,6 +2,7 @@ import { Component, Input, input } from '@angular/core';
 import { PopupService } from '../Services/popup.service';
 import { ChannelService } from '../Services/channel.service';
 import { Channel } from '../interfaces/channel.interface';
+import { ChatService } from '../Services/chat.service';
 
 @Component({
   selector: 'app-channel-menu',
@@ -20,6 +21,7 @@ export class ChannelMenuComponent {
   constructor(
     public popup: PopupService,
     public channel: ChannelService,
+    private chat: ChatService,
   ) { }
 
 
@@ -45,5 +47,6 @@ export class ChannelMenuComponent {
 
   selectChannel(channel: Channel) {
     this.channel.current_channel = channel
+    this.chat.current_chat = channel['chat'].messages
   }
 }

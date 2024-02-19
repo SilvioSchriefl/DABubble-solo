@@ -5,5 +5,5 @@ export interface User {
     avatar: string;
     token: string;
     id: number;
-    active: boolean;
+    is_active: boolean;
 }
