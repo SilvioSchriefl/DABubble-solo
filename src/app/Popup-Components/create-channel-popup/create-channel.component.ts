@@ -31,7 +31,7 @@ export class CreateChannelComponent implements OnInit {
 
 
   ngOnInit() {
-    this.all_members = structuredClone(this.auth.all_users)
+    this.all_members = this.auth.all_users.filter((user) => user.id != this.auth.user.id)
   }
 
 
@@ -43,15 +43,6 @@ export class CreateChannelComponent implements OnInit {
 
 
   async createChannel() {
-    if(!this.all_users) {
-      if(this.selected_users.length < 1) {
-        this.popup.feedback_text = 'Bitte füge einen Benutzer hinzu'
-        this.popup.response_error = true
-        setTimeout(() => this.popup.response_error = false, 2800)
-        return
-      }
-    }
-    else
     this.auth.loading = true
     let body = {
       name: this.channel_name,
@@ -59,15 +50,16 @@ export class CreateChannelComponent implements OnInit {
       members: this.getUserIds(),
       creator: this.auth.user.id
     }
-     if(await this.channel.createChannel(body)) {
+    if (await this.channel.createChannel(body)) {
       this.popup.response_success = true
       setTimeout(() => this.popup.response_success = false, 2800)
       this.closeAddChannel()
-     }
-      else {
-        this.popup.response_error = true
-        setTimeout(() => this.popup.response_error = false, 2800)
-      }  
+      this.channel.setAuthorizatedChannels()
+    }
+    else {
+      this.popup.response_error = true
+      setTimeout(() => this.popup.response_error = false, 2800)
+    }
     this.auth.loading = false
   }
 
@@ -89,8 +81,12 @@ export class CreateChannelComponent implements OnInit {
 
 
   getUserIds() {
-    if (this.all_users) return this.auth.all_users.map(user => user.id)
-    else return this.selected_users.map(user => user.id)
+    if (this.all_users) return this.auth.all_users.map(user => user.id);
+     else {
+      let userIds = this.selected_users.map(user => user.id);
+      userIds.push(this.auth.user.id);
+      return userIds;
+    }
   }
 
 
@@ -124,9 +120,4 @@ export class CreateChannelComponent implements OnInit {
     this.search_name = ''
     this.search_results = []
   }
-
-  stopPropagation($event: MouseEvent) {
-    $event.stopPropagation()
-    }
-
 }

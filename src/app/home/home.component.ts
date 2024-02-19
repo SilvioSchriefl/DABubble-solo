@@ -21,7 +21,9 @@ export class HomeComponent implements OnInit {
   async ngOnInit() {
     await this.auth.getAllUsers()
     await this.channel.getChannels()
+    this.channel.setAuthorizatedChannels()
     this.loadStandardChannel()
+    console.log(this.channel.authorized_channels)
   }
 
 

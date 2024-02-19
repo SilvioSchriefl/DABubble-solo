@@ -4,6 +4,7 @@ import { environment } from '../environments/environments';
 import { lastValueFrom } from 'rxjs';
 import { Channel } from '../interfaces/channel.interface';
 import { PopupService } from './popup.service';
+import { AuthenticationServiceService } from './authentication-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,12 @@ export class ChannelService implements OnInit {
 
   current_channel!:Channel 
   all_channels:Channel[] = [] 
+  authorized_channels:Channel[] = []
 
   constructor(
     private http: HttpClient,
     private popup: PopupService,
+    private auth: AuthenticationServiceService
   ) { }
 
 
@@ -50,11 +53,11 @@ export class ChannelService implements OnInit {
   }
 
 
-  async addUserToChannel( body: { members: number[] }) {
+  async updateChannel( body: { members?: number[], id: number }) {
     let url = environment.baseUrl + 'channel/'
     try {
-       await lastValueFrom(this.http.patch(url, body))
-       this.popup.feedback_text = 'Benutzer erfolgreich hinzugefügt'
+      let response = await lastValueFrom(this.http.patch(url, body))
+      console.log(response)
       return true
     }
     catch (error) {
@@ -62,7 +65,14 @@ export class ChannelService implements OnInit {
       this.popup.feedback_text = 'Ein Fehler ist aufgetreten'
       return false
     }
-   
+  }
 
+
+  setAuthorizatedChannels() {
+    this.authorized_channels = []
+    this.all_channels.forEach(channel => {
+      let channel_membersIds = channel.members.map((user) => user.id)
+      if (channel_membersIds.includes(this.auth.user.id)) this.authorized_channels.push(channel)
+    })
   }
 }

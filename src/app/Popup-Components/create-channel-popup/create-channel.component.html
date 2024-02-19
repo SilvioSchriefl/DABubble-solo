@@ -28,7 +28,7 @@
     </header>
 
 
-    <div class="search" *ngIf="search_results.length != 0 && search_name != '' " (click)="stopPropagation($event)">
+    <div class="search" *ngIf="search_results.length != 0 && search_name != '' " (click)="popup.stopPropagation($event)">
         <div class="search_scroll">
             <div class="search_result" *ngFor="let user of search_results" let i=index (click)="selectUser(user)">
                 <img [src]="user.avatar" alt="">
@@ -50,7 +50,7 @@
         <input type="text" [(ngModel)]="search_name" placeholder="Name" (ngModelChange)="searchUsers()">
     </div>
 
-    <div class="blue_button absolute" (click)="createChannel()">
+    <div [class.invalid]="selected_users.length == 0" class="blue_button absolute" (click)="createChannel()">
         @if (auth.loading) {
         <mat-spinner class="spinner"></mat-spinner>
         }

@@ -26,7 +26,6 @@ export class AddMemberPopupComponent implements OnInit {
 
   ngOnInit() {
     let all_channelIds = this.channel.current_channel.members.map((user) => user.id)
-    console.log(all_channelIds)
     this.auth.all_users.forEach((user) => {
       if(!all_channelIds.includes(user.id)) this.all_members.push(user)
     })
@@ -66,7 +65,8 @@ export class AddMemberPopupComponent implements OnInit {
       members: channel_userIds,
       id: this.channel.current_channel.id
     }
-    if(await this.channel.addUserToChannel( body)) {
+    if(await this.channel.updateChannel( body)) {
+      this.popup.feedback_text = 'Benutzer erfolgreich hinzugefügt'
       this.popup.response_success = true
       setTimeout(() => this.popup.response_success = false, 2800)
     }

@@ -1,7 +1,65 @@
-<header>
-    <span># {{channel.current_channel.name}}</span>
-    <div class="close" (click)="closeEditChannel()">
-        <img src="/assets/img/close.png" alt="">
+<div class="main" (click)="closeEditFunction()">
+    <header>
+        <span># {{channel.current_channel.name}}</span>
+        <div class="close" (click)="closeEditChannel()">
+            <img src="/assets/img/close.png" alt="">
+        </div>
+    </header>
+    <div  class="channel_name_div" [class.edit]="edit_channel_name">
+        <div class="header">
+            <span>Channel-Name</span>
+            @if (edit_channel_name) {
+            <span  (click)="saveChannelName()">Speichern</span>
+            }
+            @else {
+            <span  (click)="openEditChannelName(); popup.stopPropagation($event)">Bearbeiten</span>
+            }
+        </div>
+        @if (edit_channel_name) {
+        <div class="input_div" (click)="popup.stopPropagation($event)" >
+            <input type="text" [(ngModel)]="channel_name" maxlength="32" [placeholder]="channel.current_channel.name">
+            <img src="/assets/img/tag.png" alt="">
+        </div>
+
+        }
+        @else {
+        <span class="name"># {{channel.current_channel.name}}</span>
+        }
+
     </div>
-</header>
-<div></div>
+    <div class="description_div" [class.edit]="edit_channel_description">
+        <div class="header">
+            <span>Beschreibung</span>
+            @if (!edit_channel_description) {
+            <span  (click)="openEditChannelDescription(); popup.stopPropagation($event)">Bearbeiten</span>
+            }
+            @else {
+            <span   (click)="saveChannelDescription(); popup.stopPropagation($event)">Speichern</span>
+            }
+        </div>
+        @if (!edit_channel_description) {
+        @if(channel.current_channel.description) {
+        <span>{{channel.current_channel.description}}</span>
+        }
+        @else {
+        <span>Der Channel hat noch keine Beschreibung</span>
+        }
+        <div class="line"></div>
+        <div class="created">
+            <span>Erstellt von</span>
+            <span>{{channel.current_channel.creator.name}}</span>
+        </div>
+        }
+        @else {
+        <div class="input_div" (click)="popup.stopPropagation($event)" >
+            <textarea [(ngModel)]="channel_description" maxlength="100"
+                [placeholder]="channel.current_channel.description"></textarea>
+        </div>
+        }
+
+    </div>
+    <div class="button">
+        <div [class.hide]="auth.user.id != channel.current_channel.creator.id" class="white_button button3" (click)="deleteChannel()">Channel löschen</div>
+        <div class="blue_button button2" (click)="leaveChannel()">Channel verlassen</div>
+    </div>
+</div>

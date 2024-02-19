@@ -19,7 +19,7 @@ export class ChannelMenuComponent {
 
   constructor(
     public popup: PopupService,
-    public channel: ChannelService
+    public channel: ChannelService,
   ) { }
 
 
